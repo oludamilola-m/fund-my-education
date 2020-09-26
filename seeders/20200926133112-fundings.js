@@ -3,9 +3,9 @@ const faker = require("faker");
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const causesData = [];
+    const fundingsData = [];
     for (let i = 0; i <= 20; i++) {
-      causesData.push({
+      fundingsData.push({
         title: faker.lorem.sentence(),
         description: faker.lorem.paragraph(),
         image_url: faker.image.avatar(),
@@ -16,10 +16,10 @@ module.exports = {
         updatedAt: new Date(),
       });
     }
-    await queryInterface.bulkInsert("causes", causesData, {});
+    await queryInterface.bulkInsert("Fundings", fundingsData, {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("causes", null, {});
+    await queryInterface.bulkDelete("Fundings", null, {});
   },
 };
