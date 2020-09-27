@@ -11,8 +11,18 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+
+//Static file declaration
+app.use(express.static(path.join(__dirname, "client/build")));
 
 app.use("/api/fundings", fundingRoutes);
 
+app.get("*", (req, res) => {
+  res.sendfile(path.join((__dirname = "client/build/index.html")));
+});
+
+//build mode
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname + "/client/public/index.html"));
+// });
 module.exports = app;
