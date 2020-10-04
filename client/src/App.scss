@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
-
+.muted {
+  color: #c0c0c0;
+}
 .fundings-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -12,10 +13,11 @@
   height: 720px;
 
   img {
-    height: 350px;
+    height: 320px;
     width: 100%;
     max-width: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: 50% 0;
   }
 
   &__content {
@@ -34,21 +36,36 @@
     line-height: 1.7;
     color: #5e5e5e;
     height: 130px;
-    margin-bottom: 30px;
+    margin-top: 20px;
     overflow: hidden;
   }
 
   &__btn {
-    background-color: #3bcf93;
-    border: #3bcf93;
+    background-color: $green;
+    border: $green;
     color: #fff;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 1.5px;
     margin-top: 10px;
-    padding: 12px 27px 15px;
+    padding: 18px 25px 18px;
     text-transform: uppercase;
     outline: none;
+  }
+
+  &__progress-goal {
+    &__left {
+      float: left;
+    }
+
+    &__right {
+      float: right;
+    }
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
   }
 }
 

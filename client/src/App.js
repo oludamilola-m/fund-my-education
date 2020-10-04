@@ -1,11 +1,19 @@
 import React from "react";
-import "./App.scss";
-import Fundings from "./Components/Fundings";
+import Fundings from "./pages/Fundings";
+import FundingDetails from "./pages/FundingDetails";
+import { Switch, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Fundings />
+      <Switch>
+        <Route exact path="/fundings/:id">
+          <FundingDetails />
+        </Route>
+        <Route exact path="/fundings">
+          <Fundings />
+        </Route>
+      </Switch>
     </div>
   );
 }
