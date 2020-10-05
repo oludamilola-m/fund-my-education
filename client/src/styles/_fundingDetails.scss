@@ -5,7 +5,7 @@
     flex: 2;
 
     img {
-      height: 500px;
+      height: 480px;
       object-fit: cover;
       object-position: 0% 50%;
       width: 100%;
@@ -17,7 +17,7 @@
     padding-left: 35px;
 
     p:nth-child(2) {
-      margin-bottom: 20px;
+      margin-bottom: 40px;
     }
   }
 
@@ -38,7 +38,7 @@
   &__progress-goal {
     border-bottom: 1px solid #e6e6e6;
     padding-bottom: 25px;
-    margin-bottom: 20px;
+    margin-bottom: 23px;
 
     &:after {
       content: "";
