@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { useParams } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ProgressBar from "../components/ProgressBar";
 
 const FundingDetails = () => {
   const [funding, setFunding] = useState([]);
   const { id } = useParams();
+  const shareUrl = window.location.href;
 
   useEffect(() => {
     (async () => {
@@ -50,11 +53,17 @@ const FundingDetails = () => {
         </div>
 
         <div style={{ marginBottom: 20 }}>
-          <FontAwesomeIcon
-            icon={["fab", "facebook-f"]}
-            style={{ paddingRight: "30px" }}
-          />
-          <FontAwesomeIcon icon={["fab", "twitter"]} />
+          <FacebookShareButton url={shareUrl} quote={funding.short_description}>
+            <FontAwesomeIcon
+              icon={["fab", "facebook-f"]}
+              style={{ paddingRight: "30px" }}
+            />
+          </FacebookShareButton>
+
+          <TwitterShareButton url={shareUrl} title={funding.title}>
+            {" "}
+            <FontAwesomeIcon icon={["fab", "twitter"]} />
+          </TwitterShareButton>
         </div>
 
         <button className="funding-card__btn">Donate Now</button>
