@@ -19,6 +19,14 @@ progress::-webkit-progress-value {
   background: #4d5dd4;
 }
 
+.react-share__ShareButton {
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 .muted {
   color: #c0c0c0;
 }
