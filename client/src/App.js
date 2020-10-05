@@ -13,6 +13,9 @@ function App() {
         <Route exact path="/fundings">
           <Fundings />
         </Route>
+        <Route exact path="/">
+          <Fundings />
+        </Route>
       </Switch>
     </div>
   );
