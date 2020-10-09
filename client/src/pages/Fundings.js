@@ -16,7 +16,7 @@ const Fundings = () => {
     // }
   }, []);
   return (
-    <div className="fundings-container">
+    <main className="fundings-container">
       {fundings.map((funding) => {
         return (
           <div className="funding-card" key={funding.id.toString()}>
@@ -54,7 +54,7 @@ const Fundings = () => {
           </div>
         );
       })}
-    </div>
+    </main>
   );
 };
 
