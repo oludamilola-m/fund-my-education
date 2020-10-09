@@ -2,6 +2,7 @@ import React from "react";
 import Fundings from "./pages/Fundings";
 import FundingDetails from "./pages/FundingDetails";
 import { Switch, Route } from "react-router-dom";
+import Donate from "./pages/Donate";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         </Route>
         <Route exact path="/">
           <Fundings />
+        </Route>
+        <Route exact path="/fundings/:id/donate">
+          <Donate />
         </Route>
       </Switch>
     </div>

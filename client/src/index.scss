@@ -2,14 +2,16 @@
 @import "./styles/variables";
 @import "./App.scss";
 @import "./styles/fundingDetails";
+@import "./styles/donate";
 
 * {
   margin: 0;
+  box-sizing: border-box;
 }
 body {
   font-family: "Poppins", sans-serif;
-  margin: auto;
-  width: 90%;
+  // margin: auto;
+  // width: 90%;
 }
 
 a {
@@ -20,4 +22,44 @@ a {
 a:visited {
   color: initial;
   text-decoration: none;
+}
+
+main {
+  padding: 0 100px;
+}
+
+input {
+  border: 1px solid #e6e6e6;
+  color: #545454;
+  font-size: 15px;
+  padding: 18px;
+  flex: 1;
+  margin-bottom: 15px;
+  outline: 0;
+  width: 100%;
+
+  &::placeholder {
+    font-weight: 300;
+    font-size: 13px;
+    color: #adadad;
+  }
+
+  &.flat {
+    border: none;
+    border-bottom: 2px solid #e6e6e6;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+  .flex {
+    flex-wrap: wrap;
+  }
+
+  main {
+    padding: 0 40px;
+  }
 }
