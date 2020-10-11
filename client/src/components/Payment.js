@@ -1,6 +1,5 @@
 import React from "react";
-import paypalImage from "../images/paypal.png";
-import creditCardImage from "../images/credit-card.png";
+import { PayPalButton } from "react-paypal-button-v2";
 
 const Payment = ({ setAmount, amount }) => {
   return (
@@ -42,14 +41,25 @@ const Payment = ({ setAmount, amount }) => {
           className="flat"
         />
       </div>
-      <h4 style={{ color: "#BCBCBC", marginTop: 20 }}>Payment Method</h4>
-      <div className="payment-method-selector">
+      <h4 style={{ color: "#BCBCBC", margin: "30px 0px" }}>Payment Method</h4>
+      {/* <div className="payment-method-selector">
         <img src={paypalImage} alt="paypal selector" className="selected" />
         <img src={creditCardImage} alt="paypal selector" />
-      </div>
-      <button className="funding-card__btn" style={{ width: "100%" }}>
-        Donate Now
-      </button>
+      </div> */}
+      <PayPalButton
+        amount={amount}
+        onSuccess={(details, data) => {
+          alert("Transaction completed by " + details.payer.name.given_name);
+          console.log(data);
+          // send to backend
+        }}
+        options={{
+          clientId: process.env.REACT_APP_PAYPAL_CLIENT_ID,
+          currency: "EUR",
+          disableFunding: "sepa,sofort,giropay",
+          commit: true,
+        }}
+      />
     </div>
   );
 };
