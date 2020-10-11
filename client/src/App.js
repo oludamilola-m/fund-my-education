@@ -17,6 +17,9 @@ function App() {
         <Route exact path="/">
           <Fundings />
         </Route>
+        <Route exact path="/fundings/new">
+          <Fundings />
+        </Route>
         <Route exact path="/fundings/:id/donate">
           <Donate />
         </Route>
