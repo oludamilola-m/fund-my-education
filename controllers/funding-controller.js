@@ -51,6 +51,7 @@ class FundingController {
         payment_reference,
         fundingId,
       });
+
       res.sendStatus(201);
     } catch (err) {
       return res.status(500).json({ error: err.message });

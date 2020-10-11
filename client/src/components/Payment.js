@@ -1,7 +1,7 @@
 import React from "react";
 import { PayPalButton } from "react-paypal-button-v2";
 
-const Payment = ({ setAmount, amount }) => {
+const Payment = ({ setAmount, amount, submitDonation }) => {
   return (
     <div className="payment-container">
       <h3>Select Donation Amount</h3>
@@ -42,15 +42,11 @@ const Payment = ({ setAmount, amount }) => {
         />
       </div>
       <h4 style={{ color: "#BCBCBC", margin: "30px 0px" }}>Payment Method</h4>
-      {/* <div className="payment-method-selector">
-        <img src={paypalImage} alt="paypal selector" className="selected" />
-        <img src={creditCardImage} alt="paypal selector" />
-      </div> */}
+
       <PayPalButton
         amount={amount}
         onSuccess={(details, data) => {
-          alert("Transaction completed by " + details.payer.name.given_name);
-          console.log(data);
+          submitDonation(data.orderID);
           // send to backend
         }}
         options={{
