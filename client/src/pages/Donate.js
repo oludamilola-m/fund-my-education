@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import money from "../helpers/money";
 import { useParams } from "react-router-dom";
 import ProgressBar from "../components/ProgressBar";
 import useStatefulFields from "../custom-hooks/useStatefulFields";
@@ -8,7 +9,7 @@ import Payment from "../components/Payment";
 const Donate = () => {
   const [funding, setFunding] = useState();
   const [anonymous, setAnonymous] = useState(false);
-  const [amount, setAmount] = useState(10);
+  const [amount, setAmount] = useState(100);
   const [donor, handleChange] = useStatefulFields();
 
   const { id } = useParams();
@@ -26,7 +27,7 @@ const Donate = () => {
 
   const submitDonation = async (orderID) => {
     try {
-      axios.post(`/api/fundings/${id}/donations`, {
+      await axios.post(`/api/fundings/${id}/donations`, {
         donor_first_name: donor.first_name,
         donor_last_name: donor.last_name,
         donor_phone_number: donor.phone,
@@ -34,7 +35,13 @@ const Donate = () => {
         donor_email: donor.email,
         payment_reference: orderID,
       });
-    } catch (err) {}
+
+      const res = await axios.get(`/api/fundings/${id}`);
+
+      setFunding(res.data.funding);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -48,7 +55,7 @@ const Donate = () => {
             <p>YOU ARE DONATING TO:</p>
             <h2>{funding.title}</h2>
             <span className="donate-banner__total">
-              ${funding.donated_amount}
+              {money(funding.donated_amount)}
             </span>
             <ProgressBar width={funding.progress} />
             <div className="">
@@ -56,7 +63,7 @@ const Donate = () => {
                 {funding.progress}% Donated
               </span>
               <span className="funding-details__progress-goal__right donate-banner__total">
-                Goal: ${funding.total_amount}
+                Goal: {money(funding.total_amount)}
               </span>
             </div>
           </div>

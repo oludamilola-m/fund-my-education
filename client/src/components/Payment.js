@@ -1,4 +1,5 @@
 import React from "react";
+import money from "../helpers/money";
 import { PayPalButton } from "react-paypal-button-v2";
 
 const Payment = ({ setAmount, amount, submitDonation }) => {
@@ -7,28 +8,28 @@ const Payment = ({ setAmount, amount, submitDonation }) => {
       <h3>Select Donation Amount</h3>
       <div className="amount-selector">
         <span
-          className={`${amount == 10 ? "selected" : ""}`}
-          onClick={() => setAmount(10)}
+          className={`${amount == 100 ? "selected" : ""}`}
+          onClick={() => setAmount(100)}
         >
-          &#128;10
+          {money(100)}
         </span>
         <span
-          className={`${amount == 20 ? "selected" : ""}`}
-          onClick={() => setAmount(20)}
+          className={`${amount == 200 ? "selected" : ""}`}
+          onClick={() => setAmount(200)}
         >
-          &#128;20
+          {money(200)}
         </span>
         <span
-          className={`${amount == 30 ? "selected" : ""}`}
-          onClick={() => setAmount(30)}
+          className={`${amount == 300 ? "selected" : ""}`}
+          onClick={() => setAmount(300)}
         >
-          &#128;30
+          {money(300)}
         </span>
         <span
-          className={`${amount == 40 ? "selected" : ""}`}
-          onClick={() => setAmount(40)}
+          className={`${amount == 500 ? "selected" : ""}`}
+          onClick={() => setAmount(500)}
         >
-          &#128;40
+          {money(500)}
         </span>
       </div>
       <div>
