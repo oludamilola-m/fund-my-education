@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       donor_last_name: DataTypes.STRING,
       donor_phone_number: DataTypes.STRING,
       amount: { type: DataTypes.FLOAT, allowNull: false },
-      email: DataTypes.STRING,
+      donor_email: DataTypes.STRING,
       payment_reference: { type: DataTypes.STRING, allowNull: false },
       fundingId: DataTypes.INTEGER,
     },
