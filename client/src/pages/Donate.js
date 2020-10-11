@@ -24,6 +24,19 @@ const Donate = () => {
     return null;
   }
 
+  const submitDonation = async (orderID) => {
+    try {
+      axios.post(`/api/fundings/${id}/donations`, {
+        donor_first_name: donor.first_name,
+        donor_last_name: donor.last_name,
+        donor_phone_number: donor.phone,
+        amount: amount,
+        donor_email: donor.email,
+        payment_reference: orderID,
+      });
+    } catch (err) {}
+  };
+
   return (
     <div>
       <div className="donate-banner">
@@ -97,8 +110,11 @@ const Donate = () => {
           )}
         </section>
         <section className="right">
-          <h2>{amount}</h2>
-          <Payment setAmount={setAmount} amount={amount} />
+          <Payment
+            setAmount={setAmount}
+            amount={amount}
+            submitDonation={submitDonation}
+          />
         </section>
       </main>
     </div>
