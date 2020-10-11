@@ -1,5 +1,6 @@
 import React from "react";
 import ProgressBar from "../components/ProgressBar";
+import money from "../helpers/money";
 import { Link } from "react-router-dom";
 
 const FundingCard = ({ funding }) => {
@@ -16,7 +17,7 @@ const FundingCard = ({ funding }) => {
         </Link>
         <span className="muted">
           {" "}
-          <strong>${funding.donated_amount}</strong>
+          <strong>{money(funding.donated_amount)}</strong>
         </span>
         <ProgressBar width={funding.progress} />
         <div className="funding-card__progress-goal">
@@ -24,7 +25,7 @@ const FundingCard = ({ funding }) => {
             <strong>{funding.progress}% Donated</strong>
           </span>
           <span className="funding-card__progress-goal__right muted">
-            <strong>Goal: ${funding.total_amount}</strong>
+            <strong>Goal: {money(funding.total_amount)}</strong>
           </span>
         </div>
 

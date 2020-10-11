@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import money from "../helpers/money";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { useParams, Link } from "react-router-dom";
 
@@ -41,7 +42,7 @@ const FundingDetails = () => {
             {funding.progress}% Donated
           </span>
           <span className="funding-details__progress-goal__right">
-            Goal: ${funding.total_amount}
+            Goal: {money(funding.total_amount)}
           </span>
         </div>
 
@@ -49,7 +50,7 @@ const FundingDetails = () => {
           <strong>40</strong>
         </span>
         <span>
-          <strong>${funding.donated_amount}</strong>
+          <strong>{money(funding.donated_amount)}</strong>
         </span>
         <div style={{ marginBottom: "40px" }}>
           <span style={{ paddingRight: "60px" }}>Donors</span>

@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+
     static associate(models) {
       // define association here
       Donation.belongsTo(models.Funding, {
@@ -15,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
+
   Donation.init(
     {
       donor_first_name: DataTypes.STRING,
@@ -25,10 +27,18 @@ module.exports = (sequelize, DataTypes) => {
       payment_reference: { type: DataTypes.STRING, allowNull: false },
       fundingId: DataTypes.INTEGER,
     },
+
     {
       sequelize,
       modelName: "Donation",
     }
   );
+
+  Donation.afterCreate("updateFundingProgress", async (donation, options) => {
+    const funding = await donation.getFunding();
+    console.log("called");
+    funding.updateProgress();
+  });
+
   return Donation;
 };

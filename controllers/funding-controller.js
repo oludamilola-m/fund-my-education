@@ -25,6 +25,7 @@ class FundingController {
       }
       return res.status(404).json({ error: "Funding not found" });
     } catch (err) {
+      console.log(err);
       return res.status(422).json({ error: "Could not process request" });
     }
   }
