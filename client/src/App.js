@@ -3,11 +3,15 @@ import Fundings from "./pages/Fundings";
 import FundingDetails from "./pages/FundingDetails";
 import { Switch, Route } from "react-router-dom";
 import Donate from "./pages/Donate";
+import NewFunding from "./pages/NewFunding";
 
 function App() {
   return (
     <div className="App">
       <Switch>
+        <Route exact path="/fundings/new">
+          <NewFunding />
+        </Route>
         <Route exact path="/fundings/:id">
           <FundingDetails />
         </Route>
@@ -15,9 +19,6 @@ function App() {
           <Fundings />
         </Route>
         <Route exact path="/">
-          <Fundings />
-        </Route>
-        <Route exact path="/fundings/new">
           <Fundings />
         </Route>
         <Route exact path="/fundings/:id/donate">
