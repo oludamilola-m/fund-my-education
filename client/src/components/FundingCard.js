@@ -1,5 +1,5 @@
 import React from "react";
-import ProgressBar from "../components/ProgressBar";
+import ProgressBar from "./ProgressBar";
 import money from "../helpers/money";
 import { Link } from "react-router-dom";
 

@@ -1,0 +1,85 @@
+.create-funding-banner {
+  background: url("../images/page-title.jpg");
+  min-height: 250px;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: center;
+}
+
+.new-funding-form {
+  width: 40%;
+  margin: auto;
+  margin-top: 30px;
+
+  button {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  textarea {
+    border: 1px solid #e6e6e6;
+    margin-bottom: 10px;
+    outline: none;
+    width: 100%;
+
+    &::placeholder {
+      color: #adadad;
+      padding: 20px 0 0 15px;
+    }
+  }
+
+  .inputfile {
+    color: red;
+    cursor: pointer;
+    opacity: 0;
+    padding-top: 20px;
+    position: absolute;
+    bottom: -15px;
+    left: 0px;
+    width: 100%;
+  }
+
+  label {
+    border: none;
+    display: block;
+    position: relative;
+    color: #fff;
+    background: #3a3e43;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 2px;
+    padding: 20px 10px;
+    text-align: center;
+    width: 100%;
+    outline: none;
+
+    &:focus,
+    &:hover {
+      background-color: #82a853;
+      outline: none;
+    }
+
+    svg {
+      width: 1em;
+      height: 1em;
+      vertical-align: middle;
+      fill: currentColor;
+      margin-top: -0.25em;
+      margin-right: 0.25em;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .new-funding-form {
+    margin-top: 30px;
+    width: 90%;
+
+    label {
+      width: 100%;
+    }
+  }
+}
