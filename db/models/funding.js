@@ -40,6 +40,9 @@ module.exports = (sequelize, DataTypes) => {
       short_description: {
         type: DataTypes.VIRTUAL,
         get() {
+          if (!this.description) {
+            return "";
+          }
           return `${this.description.slice(0, 147)}...`;
         },
       },
