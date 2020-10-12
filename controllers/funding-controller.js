@@ -1,4 +1,6 @@
 const { Funding, Donation } = require("../db/models");
+require("dotenv").config();
+const s3Url = process.env.S3_BUCKET_URL;
 
 class FundingController {
   // GET OR SHOW ALL FUNDINGS
@@ -55,6 +57,26 @@ class FundingController {
 
       res.sendStatus(201);
     } catch (err) {
+      return res.status(500).json({ error: err.message });
+    }
+  }
+
+  static async createFunding(req, res) {
+    try {
+      const imageUrl = `${s3Url}${req.file.filename}`;
+      const { title, amount, description } = req.body;
+      const funding = await Funding.create({
+        title: title,
+        total_amount: amount,
+        description: description,
+        image_url: imageUrl,
+      });
+
+      res.status(201).json({
+        funding: funding,
+      });
+    } catch (err) {
+      console.log("err: ", err);
       return res.status(500).json({ error: err.message });
     }
   }

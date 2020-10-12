@@ -49,5 +49,9 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "Funding",
     }
   );
+
+  Funding.afterCreate(async (funding, options) => {
+    await funding.update({ progress: 0, donated_amount: 0 });
+  });
   return Funding;
 };
