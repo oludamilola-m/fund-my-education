@@ -36,7 +36,6 @@ module.exports = (sequelize, DataTypes) => {
 
   Donation.afterCreate("updateFundingProgress", async (donation, options) => {
     const funding = await donation.getFunding();
-    console.log("called");
     funding.updateProgress();
   });
 
