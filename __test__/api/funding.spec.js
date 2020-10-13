@@ -1,10 +1,13 @@
 const supertest = require("supertest");
-const app = require("../app");
+const app = require("../../app");
 const request = supertest(app);
-var { sequelize, Funding } = require("../db/models");
+var { sequelize, Funding, Donation } = require("../../db/models");
 
 let funding;
 beforeEach(async (done) => {
+  await Donation.destroy({ where: {} });
+  await Funding.destroy({ where: {} });
+
   funding = await Funding.create({
     title: "Sequi saepe placeat occaecati occaecati",
     description:

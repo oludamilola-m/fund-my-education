@@ -4,7 +4,14 @@ const bc = require("../bc.js");
 class UserController {
   static async createUser(req, res) {
     console.log("na request be this", req.body);
-    const { first_name, last_name, email, password } = req.body;
+    const {
+      first_name,
+      last_name,
+      email,
+      password,
+      phone_number,
+      address,
+    } = req.body;
 
     try {
       const hashedPassword = await bc.hash(password);
@@ -13,9 +20,11 @@ class UserController {
         first_name,
         last_name,
         email,
+        phone_number,
+        address,
         password: hashedPassword,
       });
-      res.status(201).json({
+      return res.status(201).json({
         user,
       });
     } catch (err) {
