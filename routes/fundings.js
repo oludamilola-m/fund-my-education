@@ -4,6 +4,7 @@ const multer = require("multer");
 const uidSafe = require("uid-safe");
 const path = require("path");
 const FundingController = require("../controllers/funding-controller");
+const auth = require("../middlewares/auth");
 
 const diskStorage = multer.diskStorage({
   destination: function (req, file, callback) {
@@ -30,6 +31,7 @@ router.get("/:id", FundingController.getOneFunding);
 router.post("/:fundingId/donations", FundingController.createDonation);
 router.post(
   "/",
+  auth,
   uploader.single("file"),
   s3.upload,
   FundingController.createFunding

@@ -1,9 +1,10 @@
 const { User } = require("../db/models");
 const bc = require("../bc.js");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 class UserController {
   static async createUser(req, res) {
-    console.log("na request be this", req.body);
     const {
       first_name,
       last_name,
@@ -24,8 +25,14 @@ class UserController {
         address,
         password: hashedPassword,
       });
+      // create a token
+      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+        expiresIn: 86400, // expires in 24 hours
+      });
+
       return res.status(201).json({
-        user,
+        token: token,
+        user: user,
       });
     } catch (err) {
       console.log("controller", err);
