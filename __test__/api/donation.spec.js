@@ -3,14 +3,10 @@ const app = require("../../app");
 const request = supertest(app);
 var { sequelize, Funding, Donation } = require("../../db/models");
 
-let funding;
 beforeEach(async (done) => {
-  done();
-});
+  await Funding.destroy({ where: {}, truncate: { cascade: true } });
+  await Donation.destroy({ where: {}, truncate: { cascade: true } });
 
-afterEach(async (done) => {
-  // await Donation.destroy({ where: {} });
-  // await Funding.destroy({ where: {} });
   done();
 });
 
@@ -18,7 +14,7 @@ afterAll(() => sequelize.close());
 
 describe("POST /api/fundings/:fundingId/donations", () => {
   it("create a donation", async () => {
-    funding = await Funding.create({
+    const funding = await Funding.create({
       title: "Sequi saepe placeat occaecati occaecati",
       description:
         "Doloremque voluptatibus cum et ad repellat rerum corporis. Sed aut quia libero sed doloribus esse fuga quia quas. Adipisci quam asperiores. Sint dolore id maxime dolor quia omnis. Magni expedita non molestias suscipit.",
@@ -44,7 +40,5 @@ describe("POST /api/fundings/:fundingId/donations", () => {
 
     expect(res.statusCode).toEqual(201);
     expect(await Donation.count()).toEqual(previousDonationsCount + 1);
-    await Donation.destroy({ where: {} });
-    await Funding.destroy({ where: {} });
   });
 });
