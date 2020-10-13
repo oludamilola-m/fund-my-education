@@ -4,6 +4,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 const fundingRoutes = require("./routes/fundings");
+const userRoutes = require("./routes/users");
 
 var app = express();
 
@@ -16,6 +17,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "client/build")));
 
 app.use("/api/fundings", fundingRoutes);
+app.use("/api/users", userRoutes);
 
 app.get("*", (req, res) => {
   res.sendfile(path.join((__dirname = "client/build/index.html")));
