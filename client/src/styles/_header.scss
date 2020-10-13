@@ -1,0 +1,81 @@
+.funding-header {
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 100px;
+
+  &__menu {
+    ul {
+      display: flex;
+    }
+
+    li {
+      cursor: pointer;
+      margin: 0 20px;
+      list-style: none;
+
+      a {
+        color: black;
+      }
+
+      a.active {
+        color: #1e527d;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.hamburger-menu {
+  color: #000;
+  width: 100%;
+  height: 5%;
+}
+.close {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .funding-header,
+  .funding-header__menu ul {
+    flex-wrap: wrap;
+  }
+
+  .funding-header {
+    padding: 15px 40px;
+
+    &__menu,
+    h3 {
+      display: none;
+    }
+
+    &__menu {
+      &.show {
+        display: block;
+      }
+
+      ul {
+        padding-left: 0;
+      }
+
+      li {
+        margin: 10px 0;
+        width: 100%;
+      }
+    }
+  }
+
+  .fundings-container {
+    grid-template-columns: 1fr;
+    grid-gap: 0px 50px;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+
+  .header-content {
+    display: none;
+  }
+}

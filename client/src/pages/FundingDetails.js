@@ -30,6 +30,7 @@ const FundingDetails = () => {
         <img src={funding.image_url} alt={funding.title} />
         <div className="funding-content">
           <h3>About</h3>
+          <h2>{funding.title}</h2>
           <p>{funding.description}</p>
         </div>
       </div>
