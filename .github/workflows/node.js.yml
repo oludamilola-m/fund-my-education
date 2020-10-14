@@ -35,6 +35,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
+      env:
+        JWT_SECRET: "abc"
     - run: npm run build --if-present
       env:
         # use postgres for the host here because we have specified a container for the job.
@@ -42,3 +44,6 @@ jobs:
         POSTGRES_HOST: localhost
         POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
     - run: npm test
+      env:
+        JWT_SECRET: ${{ secrets.JWT_SECRET }}
+      
