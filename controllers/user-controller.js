@@ -26,6 +26,7 @@ class UserController {
         password: hashedPassword,
       });
       // create a token
+      console.log("sname", process.env.JWT_SECRET, process.env.JWT)
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
         expiresIn: 86400, // expires in 24 hours
       });
