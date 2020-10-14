@@ -26,16 +26,16 @@ class UserController {
         password: hashedPassword,
       });
       // create a token
+
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
         expiresIn: 86400, // expires in 24 hours
       });
 
       return res.status(201).json({
         token: token,
-        user: user.dataValues,
+        user: user,
       });
     } catch (err) {
-      console.log("controller", err);
       return res.status(500).json({ error: err.message });
     }
   }

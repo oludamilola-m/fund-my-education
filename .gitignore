@@ -3,6 +3,8 @@
 .DS_Store
 client/node_modules/
 .env
+.env.development
+.env.test
 client/.env
 public/uploads
 /public/uploads

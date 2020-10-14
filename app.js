@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, "client/build")));
 
 app.use("/api/fundings", fundingRoutes);
 app.use("/api/users", userRoutes);
-app.use("/api/login", authRoutes);
+app.use("/api", authRoutes);
 
 app.get("*", (req, res) => {
   res.sendfile(path.join((__dirname = "client/build/index.html")));
