@@ -34,6 +34,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+        JWT_SECRET: qqq
     - run: npm ci
     - run: npm run build --if-present
       env:
