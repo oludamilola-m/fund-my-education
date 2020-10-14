@@ -25,10 +25,11 @@ const useCreate = (path, values, fields, resource) => {
 
     try {
       //get token from local storage
+      const token = localStorage.getItem("token");
+      console.log("useCreateToken: ", token);
       // set token as"x-access-token" on the header when making axios post
-      //const token = ......
       const res = await axios.post(path, formData, {
-        // headers: { "x-access-token": token },
+        headers: { "x-access-token": token },
       });
       window.location.replace(`/${resource}s/${res.data[resource].id}`);
     } catch (err) {
