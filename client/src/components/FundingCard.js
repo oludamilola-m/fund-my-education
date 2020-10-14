@@ -8,7 +8,7 @@ const FundingCard = ({ funding }) => {
     <div className="funding-card" key={funding.id.toString()}>
       <div>
         <Link to={`/fundings/${funding.id}`}>
-          <img src={funding.image_url} alt="funding image" />
+          <img src={funding.image_url} alt="funding-avatar" />
         </Link>
       </div>
       <div className="funding-card__content">

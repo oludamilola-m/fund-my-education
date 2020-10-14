@@ -24,7 +24,12 @@ const useCreate = (path, values, fields, resource) => {
     }
 
     try {
-      const res = await axios.post(path, formData);
+      //get token from local storage
+      // set token as"x-access-token" on the header when making axios post
+      //const token = ......
+      const res = await axios.post(path, formData, {
+        // headers: { "x-access-token": token },
+      });
       window.location.replace(`/${resource}s/${res.data[resource].id}`);
     } catch (err) {
       console.log(err);

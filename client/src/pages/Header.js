@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import HamburgerMenu from "react-hamburger-menu";
 
 import { NavLink } from "react-router-dom";
 
@@ -33,6 +32,11 @@ const Header = () => {
           <li>
             <NavLink exact to="/fundings">
               Donate
+            </NavLink>
+          </li>
+          <li>
+            <NavLink exact to="/register">
+              Register
             </NavLink>
           </li>
           <li>
