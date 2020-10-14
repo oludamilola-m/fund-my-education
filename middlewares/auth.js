@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-const auth = (req, res) => {
+const auth = (req, res, next) => {
   const token = req.headers["x-access-token"];
 
   if (!token) return res.status(401).send({ error: "No token provided." });

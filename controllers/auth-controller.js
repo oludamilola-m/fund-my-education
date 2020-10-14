@@ -22,6 +22,7 @@ class AuthController {
         res.status(401).json({ error: err.message });
       }
     } catch (err) {
+      console.log(err);
       res.status(422).json({ error: "Could not log in" });
     }
   }
