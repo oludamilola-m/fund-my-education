@@ -49,7 +49,14 @@ const Header = () => {
               New Funding Request
             </NavLink>
           </li>
-          {/* <li>Logout</li> */}
+          <li
+            className={` ${Auth.isLoggedIn ? "" : "hidden"}`}
+            onClick={() => {
+              Auth.logout();
+            }}
+          >
+            Logout
+          </li>
         </ul>
       </div>
     </div>
