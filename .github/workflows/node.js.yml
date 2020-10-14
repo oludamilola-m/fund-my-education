@@ -34,9 +34,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-        JWT_SECRET: qqq
       env:
-        JWT_SECRET: "dddd"
+        JWT_SECRET: "ooo"
     - run: npm ci
       env:
         JWT_SECRET: "abc"
@@ -44,9 +43,8 @@ jobs:
       env:
         # use postgres for the host here because we have specified a container for the job.
         # If we were running the job on the VM this would be localhost
-        JWT_SECRET: qqq
         POSTGRES_HOST: localhost
         POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
     - run: npm test
       env:
-        JWT_SECRET: "dddd"
+        JWT_SECRET: "mmm"
