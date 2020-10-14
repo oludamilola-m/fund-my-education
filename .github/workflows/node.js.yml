@@ -47,5 +47,5 @@ jobs:
         POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
     - run: npm test
       env:
-        JWT_SECRET: ${{ secret.JWT_SECRET }}
+        JWT_SECRET: ${{ secrets.JWT_SECRET }}
       
