@@ -32,6 +32,7 @@ class FundingController {
     }
   }
 
+  // CREATE DONATION
   static async createDonation(req, res) {
     try {
       const { fundingId } = req.params;
@@ -61,6 +62,7 @@ class FundingController {
     }
   }
 
+  // CREATE A SINGLE FUNDING
   static async createFunding(req, res) {
     try {
       const imageUrl = `${s3Url}${req.file.filename}`;

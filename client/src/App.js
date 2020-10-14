@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Fundings from "./pages/Fundings";
 import FundingDetails from "./pages/FundingDetails";
 import Header from "./pages/Header";
 import { Switch, Route } from "react-router-dom";
 import Donate from "./pages/Donate";
 import NewFunding from "./pages/NewFunding";
+import Registration from "./pages/Registration";
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
       <Header />
 
       <Switch>
+        <Route exact path="/register">
+          <Registration />
+        </Route>
         <Route exact path="/fundings/new">
           <NewFunding />
         </Route>
