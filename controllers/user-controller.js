@@ -30,9 +30,6 @@ class UserController {
         expiresIn: 86400, // expires in 24 hours
       });
 
-      console.log("token: ", token);
-      console.log("user: ", user.dataValues);
-
       return res.status(201).json({
         token: token,
         user: user.dataValues,
