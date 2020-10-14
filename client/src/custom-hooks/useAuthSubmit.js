@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Auth from "../Auth";
 
 const useAuthSubmit = (path, user, fields, afterPath) => {
   const [errors, setErrors] = useState({});
@@ -20,14 +21,11 @@ const useAuthSubmit = (path, user, fields, afterPath) => {
     try {
       const res = await axios.post(path, user);
 
-      // get token from  API endpoint response data
-      const storeToken = res.data.token;
-      // store token in localStorage as token
-      localStorage.setItem("token", storeToken);
+      // call function to store token in localStorage as token
+      Auth.login(res.data.token);
       //redirect to newFunding
       window.location.replace(afterPath);
     } catch (err) {
-      console.log("err: ", err);
       setErrors({ api: true });
     }
   };

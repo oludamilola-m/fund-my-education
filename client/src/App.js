@@ -1,7 +1,7 @@
 import React from "react";
 import Fundings from "./pages/Fundings";
 import FundingDetails from "./pages/FundingDetails";
-import Header from "./pages/Header";
+import Header from "./components/Header";
 import { Switch, Route } from "react-router-dom";
 import Donate from "./pages/Donate";
 import NewFunding from "./pages/NewFunding";

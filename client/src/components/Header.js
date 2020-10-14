@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Auth from "../Auth";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -33,17 +34,17 @@ const Header = () => {
               Donate
             </NavLink>
           </li>
-          <li>
+          <li className={` ${Auth.isLoggedIn ? "hidden" : ""}`}>
             <NavLink exact to="/register">
               Register
             </NavLink>
           </li>
-          <li>
+          <li className={` ${Auth.isLoggedIn ? "hidden" : ""}`}>
             <NavLink exact to="/login">
               Login
             </NavLink>
           </li>
-          <li>
+          <li className={` ${Auth.isLoggedIn ? "" : "hidden"}`}>
             <NavLink exact to="/fundings/new">
               New Funding Request
             </NavLink>
