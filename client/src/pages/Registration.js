@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import useStatefulFields from "../custom-hooks/useStatefulFields";
 import useAuthSubmit from "../custom-hooks/useAuthSubmit";
 

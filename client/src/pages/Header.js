@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
@@ -37,6 +36,11 @@ const Header = () => {
           <li>
             <NavLink exact to="/register">
               Register
+            </NavLink>
+          </li>
+          <li>
+            <NavLink exact to="/login">
+              Login
             </NavLink>
           </li>
           <li>

@@ -6,6 +6,7 @@ import { Switch, Route } from "react-router-dom";
 import Donate from "./pages/Donate";
 import NewFunding from "./pages/NewFunding";
 import Registration from "./pages/Registration";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
       <Switch>
         <Route exact path="/register">
           <Registration />
+        </Route>
+
+        <Route exact path="/login">
+          <Login />
         </Route>
         <Route exact path="/fundings/new">
           <NewFunding />
