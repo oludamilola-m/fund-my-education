@@ -20,6 +20,7 @@
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
     "cross-env": "^7.0.2",
+    "crypto-random-string": "^3.3.0",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
