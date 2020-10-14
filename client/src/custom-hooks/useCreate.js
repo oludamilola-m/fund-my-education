@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Auth from "../Auth";
 
 const useCreate = (path, values, fields, resource) => {
   const [errors, setErrors] = useState({});
@@ -25,7 +26,7 @@ const useCreate = (path, values, fields, resource) => {
 
     try {
       //get token from local storage
-      const token = localStorage.getItem("token");
+      const token = Auth.token;
 
       // set token as"x-access-token" on the header when making axios post
       const res = await axios.post(path, formData, {

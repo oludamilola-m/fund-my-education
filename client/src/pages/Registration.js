@@ -21,7 +21,7 @@ const Registration = () => {
 
   return (
     <React.Fragment>
-      <div style={{ borderTop: "2px solid #ADADAD" }}></div>
+      <div style={{ borderTop: "1px solid rgb(241 239 239)" }}></div>
       <div className="authentication-form">
         <h2>Create an account</h2>
         <p>Setup a new account in a minute.</p>

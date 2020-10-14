@@ -72,6 +72,7 @@ class FundingController {
         total_amount: amount,
         description: description,
         image_url: imageUrl,
+        userId: req.userId,
       });
 
       res.status(201).json({

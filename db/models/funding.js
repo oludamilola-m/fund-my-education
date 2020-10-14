@@ -27,6 +27,10 @@ module.exports = (sequelize, DataTypes) => {
       Funding.hasMany(models.Donation, {
         foreignKey: "fundingId",
       });
+      Funding.belongsTo(models.User, {
+        foreignKey: "userId",
+        onDelete: "CASCADE",
+      });
     }
   }
   Funding.init(
@@ -37,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       total_amount: DataTypes.FLOAT,
       donated_amount: DataTypes.FLOAT,
       progress: DataTypes.FLOAT,
+      userId: DataTypes.INTEGER,
       short_description: {
         type: DataTypes.VIRTUAL,
         get() {

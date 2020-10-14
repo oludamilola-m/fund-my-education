@@ -16,8 +16,8 @@ const Login = () => {
 
   return (
     <Fragment>
-      <div style={{ borderTop: "2px solid #ADADAD" }}></div>
-      <div className="authentication-form">
+      <div style={{ borderTop: "1px solid rgb(241 239 239)" }}></div>
+      <div className="authentication-form login">
         <h2>LOGIN</h2>
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">Email Address </label>

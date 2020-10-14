@@ -4,6 +4,10 @@
   margin-top: 30px;
   width: 50%;
 
+  &.login {
+    width: 30%;
+  }
+
   h2,
   p {
     text-align: center;
@@ -26,10 +30,9 @@
   }
 
   label {
-    font-size: 15px;
+    font-size: 13px;
     margin-top: 20px;
     margin-bottom: 5px;
-    padding-left: 10px;
   }
 
   label,
@@ -46,16 +49,16 @@
   }
 
   .auth-btn {
-    background-color: #3bcf93;
-    border: #3bcf93;
+    background-color: $green;
+    border: $green;
     color: #fff;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
     letter-spacing: 1.5px;
+    margin: 40px 0;
     padding: 18px 25px 18px;
     text-transform: uppercase;
     outline: none;
-    margin-top: 30px;
   }
 }
 

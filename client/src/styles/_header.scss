@@ -36,6 +36,10 @@
   display: none;
 }
 
+.hidden {
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
   .funding-header,
   .funding-header__menu ul {
