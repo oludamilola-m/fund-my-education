@@ -25,57 +25,64 @@ const FundingDetails = () => {
   }
 
   return (
-    <main className="funding-details">
-      <div className="funding-details__left">
-        <img src={funding.image_url} alt={funding.title} />
-        <div className="funding-content">
-          <h3>About</h3>
+    <React.Fragment>
+      <div style={{ borderTop: "1px solid rgb(241 239 239)" }}></div>
+
+      <main className="funding-details">
+        <div className="funding-details__left">
+          <img src={funding.image_url} alt={funding.title} />
+          <div className="funding-content">
+            <h3>About</h3>
+            <h2>{funding.title}</h2>
+            <p>{funding.description}</p>
+          </div>
+        </div>
+        <div className="funding-details__right">
           <h2>{funding.title}</h2>
-          <p>{funding.description}</p>
-        </div>
-      </div>
-      <div className="funding-details__right">
-        <h2>{funding.title}</h2>
-        <p>{funding.short_description}</p>
-        <ProgressBar width={funding.progress} />
-        <div className="funding-details__progress-goal">
-          <span className="funding-details__progress-goal__left">
-            {funding.progress}% Donated
+          <p>{funding.short_description}</p>
+          <ProgressBar width={funding.progress} />
+          <div className="funding-details__progress-goal">
+            <span className="funding-details__progress-goal__left">
+              {funding.progress}% Donated
+            </span>
+            <span className="funding-details__progress-goal__right">
+              Goal: {money(funding.total_amount)}
+            </span>
+          </div>
+
+          <span style={{ paddingRight: "100px" }}>
+            <strong>40</strong>
           </span>
-          <span className="funding-details__progress-goal__right">
-            Goal: {money(funding.total_amount)}
+          <span>
+            <strong>{money(funding.donated_amount)}</strong>
           </span>
-        </div>
+          <div style={{ marginBottom: "40px" }}>
+            <span style={{ paddingRight: "60px" }}>Donors</span>
+            <span>Donated</span>
+          </div>
 
-        <span style={{ paddingRight: "100px" }}>
-          <strong>40</strong>
-        </span>
-        <span>
-          <strong>{money(funding.donated_amount)}</strong>
-        </span>
-        <div style={{ marginBottom: "40px" }}>
-          <span style={{ paddingRight: "60px" }}>Donors</span>
-          <span>Donated</span>
-        </div>
+          <div style={{ marginBottom: 20 }}>
+            <FacebookShareButton
+              url={shareUrl}
+              quote={funding.short_description}
+            >
+              <FontAwesomeIcon
+                icon={["fab", "facebook-f"]}
+                style={{ marginRight: "30px" }}
+              />
+            </FacebookShareButton>
 
-        <div style={{ marginBottom: 20 }}>
-          <FacebookShareButton url={shareUrl} quote={funding.short_description}>
-            <FontAwesomeIcon
-              icon={["fab", "facebook-f"]}
-              style={{ marginRight: "30px" }}
-            />
-          </FacebookShareButton>
-
-          <TwitterShareButton url={shareUrl} title={funding.title}>
-            {" "}
-            <FontAwesomeIcon icon={["fab", "twitter"]} />
-          </TwitterShareButton>
+            <TwitterShareButton url={shareUrl} title={funding.title}>
+              {" "}
+              <FontAwesomeIcon icon={["fab", "twitter"]} />
+            </TwitterShareButton>
+          </div>
+          <Link to={`/fundings/${funding.id}/donate`}>
+            <button className="funding-card__btn">Donate Now</button>
+          </Link>
         </div>
-        <Link to={`/fundings/${funding.id}/donate`}>
-          <button className="funding-card__btn">Donate Now</button>
-        </Link>
-      </div>
-    </main>
+      </main>
+    </React.Fragment>
   );
 };
 

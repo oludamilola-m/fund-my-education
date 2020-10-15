@@ -21,17 +21,20 @@ const Fundings = () => {
     // }
   }, []);
   return (
-    <main className="fundings-container">
-      {fundings.map((funding) => {
-        return (
-          <FundingCard
-            key={funding.id.toString()}
-            funding={funding}
-            setFundings={setFundings}
-          />
-        );
-      })}
-    </main>
+    <React.Fragment>
+      <div style={{ borderTop: "1px solid rgb(241 239 239)" }}></div>
+      <main className="fundings-container">
+        {fundings.map((funding) => {
+          return (
+            <FundingCard
+              key={funding.id.toString()}
+              funding={funding}
+              setFundings={setFundings}
+            />
+          );
+        })}
+      </main>
+    </React.Fragment>
   );
 };
 
