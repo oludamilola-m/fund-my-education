@@ -4,6 +4,7 @@ import Auth from "../Auth";
 
 const useAuthSubmit = (path, user, fields, afterPath) => {
   const [errors, setErrors] = useState({});
+  const [apiError, setApiError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,10 +27,14 @@ const useAuthSubmit = (path, user, fields, afterPath) => {
       //redirect to newFunding
       window.location.replace(afterPath);
     } catch (err) {
-      setErrors({ api: true });
+      if (err.response.data && err.response.data.error) {
+        setApiError(err.response.data.error);
+      } else {
+        setApiError("Something went wrong");
+      }
     }
   };
-  return [errors, handleSubmit];
+  return [errors, apiError, handleSubmit];
 };
 
 export default useAuthSubmit;

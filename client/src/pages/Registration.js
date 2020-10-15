@@ -1,6 +1,7 @@
 import React from "react";
 import useStatefulFields from "../custom-hooks/useStatefulFields";
 import useAuthSubmit from "../custom-hooks/useAuthSubmit";
+import ErrorNotification from "../components/ErrorNotification";
 
 const Registration = () => {
   const fields = [
@@ -12,7 +13,7 @@ const Registration = () => {
     "phone_number",
   ];
   const [user, handleChange] = useStatefulFields();
-  const [errors, handleSubmit] = useAuthSubmit(
+  const [errors, apiError, handleSubmit] = useAuthSubmit(
     "/api/users",
     user,
     fields,
@@ -22,6 +23,7 @@ const Registration = () => {
   return (
     <React.Fragment>
       <div style={{ borderTop: "1px solid rgb(241 239 239)" }}></div>
+      <ErrorNotification message={apiError} />
       <div className="authentication-form">
         <h2>Create an account</h2>
         <p>Setup a new account in a minute.</p>

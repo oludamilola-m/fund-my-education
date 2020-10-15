@@ -4,6 +4,7 @@ import Auth from "../Auth";
 
 const useCreate = (path, values, fields, resource) => {
   const [errors, setErrors] = useState({});
+  const [apiError, setApiError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,10 +36,14 @@ const useCreate = (path, values, fields, resource) => {
       window.location.replace(`/${resource}s/${res.data[resource].id}`);
     } catch (err) {
       console.log(err);
-      setErrors({ api: true });
+      if (err.response.data && err.response.data.error) {
+        setApiError(err.response.data.error);
+      } else {
+        setApiError("Something went wrong");
+      }
     }
   };
-  return [errors, handleSubmit];
+  return [errors, apiError, handleSubmit];
 };
 
 export default useCreate;

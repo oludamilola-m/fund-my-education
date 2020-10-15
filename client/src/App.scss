@@ -27,6 +27,21 @@ progress::-webkit-progress-value {
   }
 }
 
+.error-notification {
+  display: none;
+  background-color: #ba4a4a;
+  color: white;
+  font-size: 13px;
+  padding: 15px 18px 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+
+  &.show {
+    display: block;
+  }
+}
+
 .muted {
   color: #c0c0c0;
 }

@@ -18,7 +18,7 @@ class AuthController {
         const token = generateToken({ id: user.id });
         res.status(200).json({ user: user, token: token });
       } else {
-        res.status(401).json({ error: err.message });
+        res.status(401).json({ error: "Invalid email / password" });
       }
     } catch (err) {
       res.status(422).json({ error: "Could not log in" });

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useCreate from "../custom-hooks/useCreate";
 import useStatefulFields from "../custom-hooks/useStatefulFields";
+import ErrorNotification from "../components/ErrorNotification";
 
 const NewFunding = () => {
   const fields = ["title", "amount", "description"];
@@ -8,7 +9,7 @@ const NewFunding = () => {
   const [file, setFile] = useState();
   const [uploadLabelText, setUploadLabelText] = useState("Upload Image");
 
-  const [errors, handleSubmit] = useCreate(
+  const [errors, apiError, handleSubmit] = useCreate(
     "/api/fundings",
     { ...funding, file: file },
     fields,
@@ -24,6 +25,7 @@ const NewFunding = () => {
       <div className="create-funding-banner">
         <h1>Create a new funding</h1>
       </div>
+      <ErrorNotification message={apiError} />
       <form className="new-funding-form" onSubmit={handleSubmit}>
         <input
           onChange={handleChange}
