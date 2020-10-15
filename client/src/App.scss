@@ -29,7 +29,22 @@ progress::-webkit-progress-value {
 
 .error-notification {
   display: none;
-  background-color: #ba4a4a;
+  background-color: #a5a5a5;
+  color: white;
+  font-size: 13px;
+  padding: 15px 18px 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+
+  &.show {
+    display: block;
+  }
+}
+
+.success-notification {
+  display: none;
+  background-color: $green;
   color: white;
   font-size: 13px;
   padding: 15px 18px 15px;

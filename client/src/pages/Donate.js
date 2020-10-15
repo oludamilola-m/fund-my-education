@@ -5,12 +5,15 @@ import { useParams } from "react-router-dom";
 import ProgressBar from "../components/ProgressBar";
 import useStatefulFields from "../custom-hooks/useStatefulFields";
 import Payment from "../components/Payment";
+import ErrorNotification from "../components/ErrorNotification";
 
 const Donate = () => {
   const [funding, setFunding] = useState();
   const [anonymous, setAnonymous] = useState(false);
   const [amount, setAmount] = useState(100);
   const [donor, handleChange] = useStatefulFields();
+  const [show, setShow] = useState(false);
+  const [apiError, setApiError] = useState("");
 
   const { id } = useParams();
 
@@ -39,7 +42,9 @@ const Donate = () => {
       const res = await axios.get(`/api/fundings/${id}`);
 
       setFunding(res.data.funding);
+      setShow(true);
     } catch (err) {
+      setApiError("PAyment could not be processed");
       console.log(err);
     }
   };
@@ -71,6 +76,10 @@ const Donate = () => {
       </div>
       <main className="donor-details">
         <section className="left">
+          <div className={`success-notification${show ? " show" : ""}`}>
+            Thank you for Your Generous Donation
+          </div>
+          <ErrorNotification message={apiError} />
           <label>
             <input
               name="anonymous"
