@@ -8,6 +8,7 @@ import NewFunding from "./pages/NewFunding";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import Auth from "./Auth";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
         </Route>
         <Route exact path="/fundings/:id/donate">
           <Donate />
+        </Route>
+        <Route exact path="/admin/login">
+          <AdminLogin />
         </Route>
       </Switch>
     </div>

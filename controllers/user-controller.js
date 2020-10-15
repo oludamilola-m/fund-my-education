@@ -1,6 +1,6 @@
 const { User } = require("../db/models");
 const bc = require("../bc.js");
-const jwt = require("jsonwebtoken");
+const generateToken = require("../generateToken");
 require("dotenv").config();
 
 class UserController {
@@ -27,9 +27,7 @@ class UserController {
       });
       // create a token
 
-      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-        expiresIn: 86400, // expires in 24 hours
-      });
+      const token = generateToken({ id: user.id });
 
       return res.status(201).json({
         token: token,
