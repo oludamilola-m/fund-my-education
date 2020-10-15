@@ -50,14 +50,10 @@ const FundingDetails = () => {
             </span>
           </div>
 
-          <span style={{ paddingRight: "100px" }}>
-            <strong>40</strong>
-          </span>
           <span>
             <strong>{money(funding.donated_amount)}</strong>
           </span>
           <div style={{ marginBottom: "40px" }}>
-            <span style={{ paddingRight: "60px" }}>Donors</span>
             <span>Donated</span>
           </div>
 
