@@ -3,8 +3,9 @@ class Auth {
     return localStorage.getItem("token");
   }
 
-  static login(token) {
+  static login(token, admin = false) {
     localStorage.setItem("token", token);
+    localStorage.setItem("admin", admin);
   }
 
   static logout() {
@@ -14,6 +15,12 @@ class Auth {
 
   static get isLoggedIn() {
     return !!localStorage.getItem("token");
+  }
+
+  static get isAdmin() {
+    if (!!localStorage.getItem("token")) return false;
+
+    return localStorage.getItem("admin");
   }
 }
 

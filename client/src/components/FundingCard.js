@@ -2,8 +2,15 @@ import React from "react";
 import ProgressBar from "./ProgressBar";
 import money from "../helpers/money";
 import { Link } from "react-router-dom";
+import Auth from "../Auth";
 
 const FundingCard = ({ funding }) => {
+  const handleApproval = (action) => {
+    try {
+    } catch (err) {
+      console.log("err: ", err);
+    }
+  };
   return (
     <div className="funding-card" key={funding.id.toString()}>
       <div>
@@ -28,12 +35,31 @@ const FundingCard = ({ funding }) => {
             <strong>Goal: {money(funding.total_amount)}</strong>
           </span>
         </div>
-
         <p className="funding-card__description">{funding.short_description}</p>
 
-        <Link to={`/fundings/${funding.id}/donate`}>
-          <button className="funding-card__btn">Donate Now</button>{" "}
-        </Link>
+        {!Auth.isAdmin && (
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <button
+              className="funding-card__btn"
+              onClick={() => handleApproval("accept")}
+            >
+              Accept
+            </button>{" "}
+            <button
+              onClick={() => handleApproval("decline")}
+              className="funding-card__btn"
+              style={{ backgroundColor: "#f36969" }}
+            >
+              Decline
+            </button>{" "}
+          </div>
+        )}
+
+        {Auth.isAdmin && (
+          <Link to={`/fundings/${funding.id}/donate`}>
+            <button className="funding-card__btn">Donate Now</button>{" "}
+          </Link>
+        )}
       </div>
     </div>
   );
