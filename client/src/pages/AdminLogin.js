@@ -1,13 +1,14 @@
 import React, { Fragment } from "react";
 import useStatefulFields from "../custom-hooks/useStatefulFields";
 import useAuthSubmit from "../custom-hooks/useAuthSubmit";
+import ErrorNotification from "../components/ErrorNotification";
 
 import { Link } from "react-router-dom";
 
 const AdminLogin = () => {
   const fields = ["username", "password"];
   const [user, handleChange] = useStatefulFields();
-  const [errors, handleSubmit] = useAuthSubmit(
+  const [errors, apiError, handleSubmit] = useAuthSubmit(
     "/api/admin/login",
     user,
     fields,
@@ -17,6 +18,7 @@ const AdminLogin = () => {
   return (
     <Fragment>
       <div style={{ borderTop: "1px solid rgb(241 239 239)" }}></div>
+      <ErrorNotification message={apiError} />
       <div className="authentication-form login">
         <h2>ADMIN LOGIN</h2>
         <form onSubmit={handleSubmit}>
