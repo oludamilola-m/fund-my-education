@@ -42,6 +42,8 @@ module.exports = (sequelize, DataTypes) => {
       donated_amount: DataTypes.FLOAT,
       progress: DataTypes.FLOAT,
       userId: DataTypes.INTEGER,
+      approved_at: DataTypes.DATE,
+      declined_at: DataTypes.DATE,
       short_description: {
         type: DataTypes.VIRTUAL,
         get() {

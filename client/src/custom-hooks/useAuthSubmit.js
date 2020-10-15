@@ -22,7 +22,7 @@ const useAuthSubmit = (path, user, fields, afterPath) => {
       const res = await axios.post(path, user);
 
       // call function to store token in localStorage as token
-      Auth.login(res.data.token);
+      Auth.login(res.data.token, res.data.admin);
       //redirect to newFunding
       window.location.replace(afterPath);
     } catch (err) {

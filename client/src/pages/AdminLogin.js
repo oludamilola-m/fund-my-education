@@ -11,7 +11,7 @@ const AdminLogin = () => {
     "/api/admin/login",
     user,
     fields,
-    "/admin/fundings"
+    "/fundings/new"
   );
 
   return (

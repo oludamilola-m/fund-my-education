@@ -34,8 +34,10 @@ class AuthController {
         username === process.env.ADMIN_USERNAME &&
         password === process.env.ADMIN_PASSWORD
       ) {
-        const token = generateToken({ username: process.env.ADMIN_USERNAME });
-        res.status(200).json({ token: token });
+        const token = generateToken({
+          admin_username: process.env.ADMIN_USERNAME,
+        });
+        res.status(200).json({ token: token, admin: true });
       } else {
         res.status(401).json({ error: "invalid" });
       }
