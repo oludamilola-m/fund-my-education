@@ -1,4 +1,4 @@
-const { Funding, Donation } = require("../db/models");
+const { Funding, Donation, sequelize, Sequelize } = require("../db/models");
 require("dotenv").config();
 const s3Url = process.env.S3_BUCKET_URL;
 
@@ -6,9 +6,20 @@ class FundingController {
   // GET OR SHOW ALL FUNDINGS
   static async getAllFundings(req, res) {
     try {
-      const fundings = await Funding.findAll();
+      let fundings;
+      if (req.query.admin == "true") {
+        fundings = await Funding.findAll();
+      } else {
+        fundings = await Funding.findAll({
+          where: Sequelize.literal(
+            "approved_at IS NOT NULL AND declined_at IS NULL"
+          ),
+        });
+      }
+
       res.status(200).json({ fundings: fundings });
     } catch (err) {
+      console.log(err);
       res.status(422).json({ error: err.message });
     }
   }
@@ -89,7 +100,7 @@ class FundingController {
       const { id } = req.params;
       const funding = await Funding.findOne({ where: { id: id } });
       if (funding) {
-        await funding.update({ approved_at: new Date() });
+        await funding.update({ approved_at: new Date(), declined_at: null });
         return res.status(200).json({ funding: funding });
       }
     } catch (err) {
@@ -102,7 +113,7 @@ class FundingController {
       const { id } = req.params;
       const funding = await Funding.findOne({ where: { id: id } });
       if (funding) {
-        await funding.update({ declined_at: new Date() });
+        await funding.update({ declined_at: new Date(), approved_at: null });
         return res.status(200).json({ funding: funding });
       }
     } catch (err) {

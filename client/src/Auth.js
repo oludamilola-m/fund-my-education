@@ -10,6 +10,7 @@ class Auth {
 
   static logout() {
     localStorage.removeItem("token");
+    localStorage.removeItem("admin");
     window.location.replace("/login");
   }
 
@@ -17,10 +18,14 @@ class Auth {
     return !!localStorage.getItem("token");
   }
 
-  static get isAdmin() {
-    if (!!localStorage.getItem("token")) return false;
+  static isAdmin() {
+    if (!!localStorage.getItem("token")) {
+      return (
+        localStorage.getItem("admin") && localStorage.getItem("admin") == "true"
+      );
+    }
 
-    return localStorage.getItem("admin");
+    return false;
   }
 }
 
