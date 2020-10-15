@@ -5,6 +5,7 @@ const uidSafe = require("uid-safe");
 const path = require("path");
 const FundingController = require("../controllers/funding-controller");
 const auth = require("../middlewares/auth");
+const authAdmin = require("../middlewares/authAdmin");
 
 const diskStorage = multer.diskStorage({
   destination: function (req, file, callback) {
@@ -29,8 +30,8 @@ const router = Router();
 router.get("/", FundingController.getAllFundings);
 router.get("/:id", FundingController.getOneFunding);
 router.post("/:fundingId/donations", FundingController.createDonation);
-router.put("/:id/approve", FundingController.approveFunding);
-router.put("/:id/decline", FundingController.declineFunding);
+router.put("/:id/approve", authAdmin, FundingController.approveFunding);
+router.put("/:id/decline", authAdmin, FundingController.declineFunding);
 
 router.post(
   "/",
