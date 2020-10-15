@@ -4,8 +4,8 @@ const request = supertest(app);
 var { sequelize, Funding, Donation } = require("../../db/models");
 
 beforeAll(async (done) => {
-  Donation.destroy({ where: {}, truncate: { cascade: true } });
-  Funding.destroy({ where: {}, truncate: { cascade: true } });
+  await Donation.destroy({ where: {}, truncate: { cascade: true } });
+  await Funding.destroy({ where: {}, truncate: { cascade: true } });
   done();
 });
 
@@ -21,6 +21,7 @@ describe("GET /api/fundings", () => {
         "https://s3.amazonaws.com/uifaces/faces/twitter/chrisslowik/128.jpg",
       total_amount: 1319,
       donated_amount: 0,
+      approved_at: new Date(),
       progress: 0,
     });
     const res = await request.get("/api/fundings");
