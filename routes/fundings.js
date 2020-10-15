@@ -29,6 +29,9 @@ const router = Router();
 router.get("/", FundingController.getAllFundings);
 router.get("/:id", FundingController.getOneFunding);
 router.post("/:fundingId/donations", FundingController.createDonation);
+router.put("/:id/approve", FundingController.approveFunding);
+router.put("/:id/decline", FundingController.declineFunding);
+
 router.post(
   "/",
   auth,

@@ -3,10 +3,15 @@ import ProgressBar from "./ProgressBar";
 import money from "../helpers/money";
 import { Link } from "react-router-dom";
 import Auth from "../Auth";
+import axios from "axios";
 
 const FundingCard = ({ funding }) => {
-  const handleApproval = (action) => {
+  //send accept token header
+  const handleApproval = async (action) => {
     try {
+      await axios.put(`/api/fundings/${funding.id}/${action}`, {
+        headers: { "x-access-token": token },
+      });
     } catch (err) {
       console.log("err: ", err);
     }
@@ -41,9 +46,9 @@ const FundingCard = ({ funding }) => {
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <button
               className="funding-card__btn"
-              onClick={() => handleApproval("accept")}
+              onClick={() => handleApproval("approve")}
             >
-              Accept
+              Approve
             </button>{" "}
             <button
               onClick={() => handleApproval("decline")}

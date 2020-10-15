@@ -83,6 +83,32 @@ class FundingController {
       return res.status(500).json({ error: err.message });
     }
   }
+
+  static async approveFunding(req, res) {
+    try {
+      const { id } = req.params;
+      const funding = await Funding.findOne({ where: { id: id } });
+      if (funding) {
+        await funding.update({ approved_at: new Date() });
+        return res.status(200).json({ funding: funding });
+      }
+    } catch (err) {
+      return res.status(422).json({ error: "Could not process request" });
+    }
+  }
+
+  static async declineFunding(req, res) {
+    try {
+      const { id } = req.params;
+      const funding = await Funding.findOne({ where: { id: id } });
+      if (funding) {
+        await funding.update({ declined_at: new Date() });
+        return res.status(200).json({ funding: funding });
+      }
+    } catch (err) {
+      return res.status(422).json({ error: "Could not process request" });
+    }
+  }
 }
 
 module.exports = FundingController;
