@@ -81,7 +81,7 @@ const Registration = () => {
               <label htmlFor="password">Password</label>
               <input
                 onChange={handleChange}
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Enter Password*"
               />
@@ -91,7 +91,7 @@ const Registration = () => {
               <label htmlFor="password">Confirm Password</label>
               <input
                 onChange={handleChange}
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Confirm Password*"
               />
